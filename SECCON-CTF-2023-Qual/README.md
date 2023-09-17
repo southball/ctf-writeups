@@ -20,7 +20,7 @@ It is NOT a good idea to create a team because you think that “surely it is po
 
 ## Welcome (00:00, 50 pt, 617 teams solved)
 
-The flag is posted one hour before the competition started in the #announcement channel of the Discord. Simply submit the flag for 50 pt.
+The flag is posted one hour before the competition started in the #announcement channel of the Discord. Simply submit `SECCON{Welcome_to_SECCON_CTF_2023}` for 50 pt.
 
 ## jumpout (00:40, 84 pt, 154 teams solved)
 
