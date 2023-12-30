@@ -16,7 +16,7 @@ This time we have a x86 binary. However, we do not need to run this binary.
 
 Taking a look at the binary, we see that the binary makes use of a QR code generation library because of the error messages. (The function name below is changed manually.)
 
-![[Dadci Screenshot 1.png]]
+![Dadci Screenshot 1.png](Dadci%20Screenshot%201.png)
 
 There are two difficult parts of this problem: the requirement to identify the source code of the QR code library, and to understand how the flag is transformed. The QR code library is probably [`nayuki/QR-Code-generator`](https://github.com/nayuki/QR-Code-generator/tree/master), which allows us to separate the code that is a part of the library and the code that is a part of the transformation.
 
@@ -28,7 +28,7 @@ After that, it is simply a matter of reading the `main` function and changing th
 - `Split Out As New Variable` for separating each use of reused variables
   which when used probably can help us obtain a readable decompiled result.
 
-![[Dadci Screenshot 2.png]]
+![Dadci Screenshot 2.png](Dadci%20Screenshot%202.png)
 
 The transformation applied is then as follows:
 
@@ -110,7 +110,7 @@ for i in range(qrsize):
     print("")
 ```
 
-![[Dadci QR code.png]]
+![Dadci QR code.png](./Dadci%20QR%20code.png)
 
 Scan the QR code with any QR code reader, and the flag is `ASIS{X0R_1s_4m4z1n9_But_qR_1s_1337!X0R_w17h_qR_4nd_937_cr34t1v3!L3v3l_Up_w17h_1mp4ctful_t3xts!}`.
 
